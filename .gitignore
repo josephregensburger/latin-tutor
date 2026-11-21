@@ -1,0 +1,14 @@
+node_modules/
+.next/
+generated/
+out/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+.venv/
+.pytest_cache/
+services/latin-nlp/.model-cache/

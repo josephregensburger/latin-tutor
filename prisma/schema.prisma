@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum SentenceStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  ARCHIVED
+}
+
+model Sentence {
+  id                    String           @id @default(cuid())
+  latin                 String           @unique
+  literalTranslation    String?
+  translation           String?
+  alternateTranslations String[]         @default([])
+  source                String?
+  difficulty            Int              @default(1)
+  vocabularyLevel       String           @default("introductory")
+  grammarTopics         String[]         @default([])
+  status                SentenceStatus   @default(DRAFT)
+  approvedAt            DateTime?
+  tokens                SentenceToken[]
+  analysisRuns          AnalysisRun[]
+  attempts              StudentAttempt[]
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+
+  @@index([status, difficulty])
+}
+
+model SentenceToken {
+  id            String   @id @default(cuid())
+  sentenceId    String
+  sentence      Sentence @relation(fields: [sentenceId], references: [id], onDelete: Cascade)
+  position      Int
+  word          String
+  lemma         String
+  partOfSpeech  String
+  morphology    Json
+  syntacticRole String?
+  headPosition  Int?
+  meanings      String[] @default([])
+
+  @@unique([sentenceId, position])
+  @@index([lemma])
+}
+
+model AnalysisRun {
+  id         String   @id @default(cuid())
+  sentenceId String
+  sentence   Sentence @relation(fields: [sentenceId], references: [id], onDelete: Cascade)
+  provider   String
+  model      String?
+  version    String?
+  status     String   @default("PROPOSED")
+  output     Json
+  reviewedAt DateTime?
+  createdAt  DateTime @default(now())
+
+  @@index([sentenceId, createdAt])
+}
+
+model StudentAttempt {
+  id                   String   @id @default(cuid())
+  sentenceId           String
+  sentence             Sentence @relation(fields: [sentenceId], references: [id], onDelete: Restrict)
+  submittedTranslation String?
+  stageAnswers         Json     @default("{}")
+  completedAt          DateTime?
+  createdAt            DateTime @default(now())
+
+  @@index([sentenceId, createdAt])
+}
