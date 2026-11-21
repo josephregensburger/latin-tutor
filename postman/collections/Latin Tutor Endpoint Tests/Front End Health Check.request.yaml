@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{Front End URL}}/health"
+method: GET
+order: 1000
