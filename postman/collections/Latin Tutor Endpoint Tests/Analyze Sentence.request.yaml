@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{NLP URL}}/analyze"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "text": "Multos pueros docetis"
+    }
+order: 3000

@@ -1,3 +1,4 @@
 fastapi>=0.115,<1
 uvicorn[standard]>=0.34,<1
-spacy>=3.8,<4
+spacy>=3.8.11,<3.9.0
+la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/eef5720/la_core_web_lg-3.9.8-py3-none-any.whl

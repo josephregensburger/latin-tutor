@@ -9,18 +9,18 @@ Use this page as the project tracker. Check an item only after its acceptance co
 - [x] Add the initial PostgreSQL/Prisma schema and database helper scaffold.
 - [x] Add the Docker Compose services and Python Latin NLP API scaffold.
 - [x] Document the architecture, grammar conventions, and human-reviewed truthing workflow.
-- [ ] Install dependencies and verify the scaffold starts successfully.
+- [x] Install dependencies and verify the scaffold starts successfully.
 
 ## Milestone 1 — Run the foundation locally
 
-- [ ] Install the required local tools: Node.js 22+, npm, Docker Desktop, and Git.
-- [ ] Copy `.env.example` to `.env` for commands run outside Docker.
-- [ ] Run `docker compose up --build` successfully.
-- [ ] Open the student prototype at `http://localhost:3000/student`.
-- [ ] Open the authoring overview at `http://localhost:3000/admin`.
-- [ ] Confirm `http://localhost:3000/api/health` returns `status: ok`.
-- [ ] Confirm PostgreSQL is healthy and the NLP service reports whether its model is installed.
-- [ ] Record any setup fixes in this checklist or README.
+- [x] Install the required local tools: Node.js 22+, npm, Docker Desktop, and Git.
+- [x] Copy `.env.example` to `.env` for commands run outside Docker.
+- [x] Run `docker compose up --build` successfully.
+- [x] Open the student prototype at `http://localhost:3000/student`.
+- [x] Open the authoring overview at `http://localhost:3000/admin`.
+- [x] Confirm `http://localhost:3000/api/health` returns `status: ok`.
+- [X] Confirm PostgreSQL is healthy and the NLP service reports whether its model is installed.
+- [x] Record any setup fixes in this checklist or README.
 
 **Done when:** the web app, database, and NLP service start together on the development Mac, and the student screen and health endpoint load.
 
@@ -122,4 +122,4 @@ Append a short dated note after each work session: what changed, what is now com
 
 | Date | Completed | Decisions or blockers | Next task |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| 2026-11-21 | Milestone 1 complete. Verified `/student`, `/admin`, `/api/health`, and `/api/dbhealth`. The NLP health endpoint reports `la_core_web_lg` ready. | PostgreSQL responds to `SELECT 1` from the web app and is reachable from the terminal via `pgcli`. | Start Milestone 2 by saving the initial LatinCy analyses with their reviewed answers, then select 20–30 representative curriculum sentences. |

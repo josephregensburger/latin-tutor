@@ -12,3 +12,4 @@ __pycache__/
 .venv/
 .pytest_cache/
 services/latin-nlp/.model-cache/
+docs/Latin+I+Homework+2026-2027.pdf
